@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var selection: Int = 0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView(selection: $selection) {
+            ProfileScreen()
+                .tag(0)
+                .tabItem {
+                    Text("Profile")
+                }
+            NewsScreen(secretFeature: 0.0)
+                .tag(1)
+                .tabItem {
+                    Text("News")
+                }
+            SettingsScreen()
+                .tag(2)
+                .tabItem {
+                    Text("Settings")
+                }
         }
-        .padding()
     }
 }
 
